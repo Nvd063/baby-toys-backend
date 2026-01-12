@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => \App\Http\Middleware\CheckRole::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'api/*' 
+            // 'http://127.0.0.1:8000/api/*'  Safety ke liye full path bhi de sakte hain
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
     })->create();
