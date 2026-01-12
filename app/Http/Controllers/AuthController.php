@@ -30,4 +30,26 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8|confirmed',  // Confirmed for password match
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'user',  // Default user role (admin manual)
+        ]);
+
+        $token = $user->createToken('api-token')->plainTextToken;
+        return response()->json([
+            'token' => $token,
+            'user' => $user->only(['id', 'name', 'email', 'role'])
+        ], 201);
+    }
+
 }
