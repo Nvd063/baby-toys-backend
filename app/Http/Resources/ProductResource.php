@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use App\Http\Resources\SubCategoryResource;
 class ProductResource extends JsonResource
 {
     public function toArray($request): array
