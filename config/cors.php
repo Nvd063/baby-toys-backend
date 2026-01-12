@@ -7,7 +7,7 @@ return [
 
     'allowed_methods' => ['*'], // Saare methods (GET, POST, etc.) allow karein
 
-    'allowed_origins' => ['http://localhost:5173', 'http://127.0.0.1:5173'], // Apne frontend ka URL yahan likhein. Dev ke liye ['*'] bhi use kar sakte hain.
+    'allowed_origins' => ['*'], // Apne frontend ka URL yahan likhein. Dev ke liye ['*'] bhi use kar sakte hain.
 
     'allowed_origins_patterns' => [],
 
