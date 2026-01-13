@@ -100,18 +100,8 @@ class AdminProductController extends Controller
 
     public function postStep3(Request $request)
     {
-
         $subCategoryId = session('create_product.sub_category_id');
 
-        // FIXED DEBUG: Sirf basic check, no invalid validate
-        dd([
-            'sub_category_id' => $subCategoryId, // Null ho to session issue
-            'request_data' => $request->all(), // Form fields aa rahe?
-            'has_errors_before_validate' => $request->errors()->all(), // Pre-validation errors (if any)
-        ]);
-
-
-        $subCategoryId = session('create_product.sub_category_id');
         if (!$subCategoryId) {
             return redirect()->route('admin.products.create.step1');
         }
